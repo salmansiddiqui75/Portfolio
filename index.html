@@ -20,7 +20,7 @@
             <a href="#" class="active">Home</a>
             <a href="#about" >About</a>
             <a href="#services" >Services</a>
-            <a href="#portfolio" >Portfolio</a>
+            <a href="#portfolio" >Projects</a>
             <a href="#contact" >Contact</a>
         </nav>
     </header>
@@ -164,17 +164,17 @@
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span> Me</span></h2>
 
-        <form action="#">
+        <form action="#" name="submit-to-google-sheet">
             <div class="input-box">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email Address">
+                <input type="text" name="Name" placeholder="Full Name">
+                <input type="email" name="Email" placeholder="Email Address">
             </div>
 
             <div class="input-box">
-                <input type="number" placeholder="Mobile Number">
-                <input type="text" placeholder="Email Subject"> 
+                <input type="number" name="Mobile" placeholder="Mobile Number">
+                <input type="text" name="Subject" placeholder="Email Subject"> 
             </div>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your message"></textarea>
+            <textarea name="Message" id="" cols="30" rows="10" placeholder="Your message"></textarea>
             <input type="submit" value="Send Message" class="btn">
         </form>
     </section>
@@ -183,21 +183,34 @@
 
 <footer class="footer">
     <div class="footer-tex">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, libero!</p>
+        <p>© 2024 SiddiquiTech. All rights reserved.</p>
     </div>
     <div class="footer-iconTop">
         <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
     </div>
 </footer>
 
-    <!--Scroll Reveal Js--->>
+    <!--Scroll Reveal Js--->
 
     <script src="https://unpkg.com/scrollreveal"></script>
 
-    <!---Typed Js-->>
+    <!---Typed Js-->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <!-- Main JS --->
     <script src="JS/main.js"></script>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxcq400mqNdv8A9Iz5FJQGgls8A4F_N9H6MsDk7lMxFWbTjxyomB3KFbBFaSE48ESuK/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
 </body>
 </html>
